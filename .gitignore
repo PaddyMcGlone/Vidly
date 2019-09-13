@@ -1,6 +1,10 @@
 ###################
 # compiled source #
 ###################
+bin
+obj
+*.user
+*.suo
 *.com
 *.class
 *.dll
