@@ -13,5 +13,10 @@ namespace Vidly.Controllers
         {
             return View(new Movie{Name = "The Italian Job"});
         }
+
+        public ActionResult Released(int year, int month)
+        {
+            return Content($"Year {year} & Month {month} - Yes Paddy !");
+        }
     }
 }
