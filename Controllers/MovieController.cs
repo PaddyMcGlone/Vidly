@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
+using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
@@ -20,7 +21,20 @@ namespace Vidly.Controllers
             //    }
             //};
 
-            return View(new Movie{Name = "The Italian Job"});
+            // Initialise the new ViewModel
+            var viewModel = new RandomMovieViewModel
+            {
+                Movie = new Movie {Name = "Everest"},
+                Customers = new List<Customer>
+                {
+                    new Customer {Name = "Joe"},
+                    new Customer {Name = "Aaron"}
+                }
+            };
+
+            return View(viewModel);
+
+            //return View(new Movie{Name = "The Italian Job"});
         }
 
         [Route("Movies/Released/{year}/{month}")]
