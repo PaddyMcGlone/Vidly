@@ -10,6 +10,22 @@ namespace Vidly.Controllers
 {
     public class MovieController : Controller
     {
+        private List<Movie> movies { get; }
+
+        public MovieController()
+        {
+            movies = new List<Movie>
+            {
+                new Movie{Name = "Star wars"},
+                new Movie{Name = "Lion King"}
+            };
+        }
+
+        public ActionResult Index()
+        {
+            return View(movies);
+        }
+
         public ActionResult Random()
         {
             // There are other properties within the viewResult, not just model.
