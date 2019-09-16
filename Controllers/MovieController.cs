@@ -23,6 +23,9 @@ namespace Vidly.Controllers
 
         public ActionResult Index()
         {
+            if (movies.Count == 0)
+                return Content("No movies to display");
+
             return View(movies);
         }
 

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using Vidly.Models;
 
@@ -21,12 +22,19 @@ namespace Vidly.Controllers
         // GET: Customer
         public ActionResult Index()
         {
+            if (Customers.Count == 0)
+                return Content("No customers to display");
+
             return View(Customers);
         }
 
         public ActionResult ViewCustomer(int Id)
         {
-            var customer = Customers.Find(c => c.Id == Id);
+            var customer = Customers.SingleOrDefault(c => c.Id == Id);
+
+            if (customer == null)
+                return HttpNotFound();
+
             return View(customer);
         }
     }
