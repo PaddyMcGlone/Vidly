@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using Vidly.Models;
@@ -23,7 +24,7 @@ namespace Vidly.Controllers
         // GET: Customer
         public ActionResult Index()
         {
-            var customers = context.Customers.ToList();
+            var customers = context.Customers.Include(c => c.MembershipType).ToList();
 
             if (customers.Count == 0)
                 return Content("No customers to display");
