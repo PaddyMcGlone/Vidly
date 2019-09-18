@@ -10,23 +10,29 @@ namespace Vidly.Controllers
 {
     public class MovieController : Controller
     {
-        private List<Movie> movies { get; }
+        public ApplicationDbContext Context { get; set; }
 
         public MovieController()
         {
-            movies = new List<Movie>
-            {
-                new Movie{Name = "Star wars"},
-                new Movie{Name = "Lion King"}
-            };
+            Context = new ApplicationDbContext();
         }
 
         public ActionResult Index()
         {
+            var movies = Context.Movies.ToList();
+
             if (movies.Count == 0)
                 return Content("No movies to display");
 
             return View(movies);
+        }
+
+        public ActionResult Details(int Id)
+        {
+            var movie = Context.Movies.Find(Id);
+            if (movie == null) return HttpNotFound();
+
+            return View(movie);
         }
 
         public ActionResult Random()

@@ -285,6 +285,7 @@
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\ViewCustomer.cshtml" />
     <Content Include="Views\Movie\Index.cshtml" />
+    <Content Include="Views\Movie\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
