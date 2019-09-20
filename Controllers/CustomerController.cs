@@ -56,6 +56,12 @@ namespace Vidly.Controllers
         [HttpPost]
         public ActionResult Add(CustomerFormViewModel formViewModel)
         {
+            if (!Modelstate.IsValid)
+            {
+                // Create the viewmodel, with the customer and dropdown list
+                // return the view
+            }
+
             if (formViewModel.Customer.Id == 0)
                 context.Customers.Add(formViewModel.Customer);
             else
