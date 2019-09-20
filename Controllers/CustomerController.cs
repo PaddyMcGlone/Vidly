@@ -44,7 +44,7 @@ namespace Vidly.Controllers
 
         public ActionResult Add()
         {
-            var viewModel = new CustomerViewModel
+            var viewModel = new CustomerFormViewModel
             {
                 MembershipTypes = context.MembershipTypes.ToList(),
                 Customer = new Customer()
@@ -54,9 +54,9 @@ namespace Vidly.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(CustomerViewModel viewModel)
+        public ActionResult Add(CustomerFormViewModel formViewModel)
         {
-            context.Customers.Add(viewModel.Customer);
+            context.Customers.Add(formViewModel.Customer);
             context.SaveChanges();
 
             return RedirectToAction("Index", "Customers");
@@ -67,13 +67,13 @@ namespace Vidly.Controllers
             var customer = context.Customers.Find(Id);
             if (customer == null) return HttpNotFound();
 
-            var viewModel = new CustomerViewModel
+            var viewModel = new CustomerFormViewModel
             {
                 Customer = customer,
                 MembershipTypes = context.MembershipTypes.ToList()
             };
 
-            return View("New", viewModel);
+            return View("Add", viewModel);
         }
     }
 }
