@@ -56,9 +56,12 @@ namespace Vidly.Controllers
         [HttpPost]
         public ActionResult Add(CustomerFormViewModel formViewModel)
         {
-            context.Customers.Add(formViewModel.Customer);
+            if (formViewModel.Customer.Id == 0)
+                context.Customers.Add(formViewModel.Customer);
+            else
+                TryUpdateModel(formViewModel.Customer);
+            
             context.SaveChanges();
-
             return RedirectToAction("Index", "Customers");
         }
 
