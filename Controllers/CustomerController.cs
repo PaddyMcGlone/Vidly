@@ -61,5 +61,19 @@ namespace Vidly.Controllers
 
             return RedirectToAction("Index", "Customers");
         }
+
+        public ActionResult Edit(int Id)
+        {
+            var customer = context.Customers.Find(Id);
+            if (customer == null) return HttpNotFound();
+
+            var viewModel = new CustomerViewModel
+            {
+                Customer = customer,
+                MembershipTypes = context.MembershipTypes.ToList()
+            };
+
+            return View("New", viewModel);
+        }
     }
 }
