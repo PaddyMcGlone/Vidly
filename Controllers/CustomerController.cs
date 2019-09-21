@@ -32,13 +32,13 @@ namespace Vidly.Controllers
             return View(customers);
         }
 
-        public ActionResult ViewCustomer(int Id)
+        public ActionResult Details(int Id)
         {
-            var customer = context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == Id);
+            var customer = context.Customers
+                                    .Include(c => c.MembershipType)
+                                    .SingleOrDefault(c => c.Id == Id);
 
-            if (customer == null)
-                return HttpNotFound();
-
+            if (customer == null) return HttpNotFound();
             return View(customer);
         }
 
@@ -56,10 +56,10 @@ namespace Vidly.Controllers
         [HttpPost]
         public ActionResult Add(CustomerFormViewModel formViewModel)
         {
-            if (!Modelstate.IsValid)
+            if (!ModelState.IsValid)
             {
-                // Create the viewmodel, with the customer and dropdown list
-                // return the view
+                formViewModel.MembershipTypes = context.MembershipTypes.ToList();
+                return View("Add", formViewModel);
             }
 
             if (formViewModel.Customer.Id == 0)
