@@ -54,21 +54,26 @@ namespace Vidly.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(CustomerFormViewModel formViewModel)
+        public ActionResult Add(Customer customer)
         {
             if (!ModelState.IsValid)
             {
-                formViewModel.MembershipTypes = context.MembershipTypes.ToList();
-                return View("Add", formViewModel);
+                var viewModel = new CustomerFormViewModel
+                {
+                    MembershipTypes = context.MembershipTypes.ToList(),
+                    Customer = customer
+                };
+                
+                return View("Add", viewModel);
             }
 
-            if (formViewModel.Customer.Id == 0)
-                context.Customers.Add(formViewModel.Customer);
+            if (customer.Id == 0)
+                context.Customers.Add(customer);
             else
-                TryUpdateModel(formViewModel.Customer);
+                TryUpdateModel(customer);
             
             context.SaveChanges();
-            return RedirectToAction("Index", "Customers");
+            return RedirectToAction("Index", "Customer");
         }
 
         public ActionResult Edit(int Id)
