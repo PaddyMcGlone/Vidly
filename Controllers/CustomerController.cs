@@ -70,8 +70,10 @@ namespace Vidly.Controllers
             if (customer.Id == 0)
                 context.Customers.Add(customer);
             else
+            {
                 TryUpdateModel(customer);
-            
+            }
+
             context.SaveChanges();
             return RedirectToAction("Index", "Customer");
         }

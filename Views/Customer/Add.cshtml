@@ -7,7 +7,7 @@
 
 <h2>Add a customer</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Add", "Customer"))
 {
     @Html.HiddenFor(m => m.Customer.Id)
 
