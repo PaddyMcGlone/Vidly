@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using Vidly.Models;
@@ -71,7 +70,12 @@ namespace Vidly.Controllers
                 context.Customers.Add(customer);
             else
             {
-                TryUpdateModel(customer);
+                // This needs automapped
+                var source                      = context.Customers.Find(customer.Id);
+                source.Name                     = customer.Name;
+                source.BirthDate                = customer.BirthDate;
+                source.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
+                source.MembershipTypeId         = customer.MembershipTypeId;
             }
 
             context.SaveChanges();
