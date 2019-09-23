@@ -1,0 +1,11 @@
+﻿@model Vidly.Models.Movie
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add a customer</h2>
+
+@using (Html.BeginForm("Add", "Customer"))
+{

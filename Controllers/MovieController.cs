@@ -35,6 +35,13 @@ namespace Vidly.Controllers
             return View(movie);
         }
 
+        public ActionResult Add()
+        {
+            var model = new Movie();
+
+            return View(model);
+        }
+
         public ActionResult Random()
         {
             // There are other properties within the viewResult, not just model.
