@@ -1,9 +1,9 @@
 ﻿namespace Vidly.Models
 {
-    public enum Genre
+    public class Genre
     {
-        Action = 1,
-        Horror = 2,
-        Sports = 3
+        public byte Id { get; set; }
+
+        public string Name { get; set; }
     }
 }
