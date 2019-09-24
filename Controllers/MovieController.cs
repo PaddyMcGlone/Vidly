@@ -37,9 +37,13 @@ namespace Vidly.Controllers
 
         public ActionResult Add()
         {
-            var model = new Movie();
+            var viewModel = new MovieViewModel
+            {
+                Genres = Context.Genres.ToList(),
+                Movie = new Movie()
+            };
 
-            return View(model);
+            return View(viewModel);
         }
 
         public ActionResult Random()

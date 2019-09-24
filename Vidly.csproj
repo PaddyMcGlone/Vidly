@@ -215,6 +215,14 @@
     <Compile Include="Migrations\201909241656185_AddingGenreTable.Designer.cs">
       <DependentUpon>201909241656185_AddingGenreTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909241713224_SeedingGenreTable.cs" />
+    <Compile Include="Migrations\201909241713224_SeedingGenreTable.Designer.cs">
+      <DependentUpon>201909241713224_SeedingGenreTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909241846216_AddAnnotationsToMovieTable.cs" />
+    <Compile Include="Migrations\201909241846216_AddAnnotationsToMovieTable.Designer.cs">
+      <DependentUpon>201909241846216_AddAnnotationsToMovieTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -224,6 +232,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\MovieViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\RandomMovieViewModel.cs" />
@@ -340,6 +349,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909241656185_AddingGenreTable.resx">
       <DependentUpon>201909241656185_AddingGenreTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909241713224_SeedingGenreTable.resx">
+      <DependentUpon>201909241713224_SeedingGenreTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909241846216_AddAnnotationsToMovieTable.resx">
+      <DependentUpon>201909241846216_AddAnnotationsToMovieTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
