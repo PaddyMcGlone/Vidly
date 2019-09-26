@@ -23,7 +23,7 @@
         <tr>
             <td>@Html.ActionLink(@customer.Name, "Edit", new {customer.Id})</td>
             <td>@customer.MembershipType.Name</td>
-            <td><button class="btn-link js-delete">Delete</button></td>
+            <td><button data-customer-id="@customer.Id" class="btn-link js-delete">Delete</button></td>
         </tr>
     }
 </table>
@@ -33,7 +33,16 @@
     <script>
         $(document).ready(function() {
             $("#customers js-delete").On("click", function() {
-                
+                var button = $(this); // Current button clicked.
+                if(confirm("Do you want to complete?")) {
+                    $.ajax({                        
+                        url: "/api/customers/" + $(this).attr("data-customer-id"),                        
+                        method: "DELETE",
+                        success: function(){
+                            button.parents("tr").remove();
+                        }
+                    })
+                }
             });
         });
     </script>
